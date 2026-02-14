@@ -1,26 +1,143 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ------------------------------
+   theme variables
+------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-top: #5b4bb7;
+  --bg-mid: #7a6fe0;
+  --bg-bottom: #b7b0ff;
+
+  /* overlays */
+  --bloom: rgba(255, 255, 255, 0.22);
+  --vignette: rgba(0, 0, 0, 0.22);
+  --grain: rgba(255, 255, 255, 0.035);
+
+  --glow-soft: 0 0 60px rgba(255, 255, 255, 0.22);
+  --glow-strong: 0 0 140px rgba(255, 255, 255, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------
+   base layout
+------------------------------ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  color: white;
+  background: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+/* ensure app content sits above fixed layers */
+#__next {
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+}
+
+/* ------------------------------
+   fixed background: gradient
+------------------------------ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-top) 0%,
+    var(--bg-mid) 45%,
+    var(--bg-bottom) 100%
+  );
+}
+
+/* ------------------------------
+   fixed overlays: bloom + vignette + subtle grain
+   (single layer to avoid weird stacking with backdrop-blur)
+------------------------------ */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+
+  background:
+    /* bloom behind logo */
+    radial-gradient(
+      680px 520px at 50% 34%,
+      var(--bloom),
+      rgba(255, 255, 255, 0.12) 26%,
+      rgba(255, 255, 255, 0) 70%
+    ),
+
+    /* gentle vignette */
+    radial-gradient(
+      75% 75% at 50% 45%,
+      rgba(0, 0, 0, 0) 50%,
+      var(--vignette) 100%
+    ),
+
+    /* subtle grain (comment out if you don't want it) */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0px,
+      rgba(255, 255, 255, 0) 2px,
+      var(--grain) 3px
+    );
+
+  opacity: 1;
+}
+
+/* ------------------------------
+   optional ambient blobs helper (if you use it)
+------------------------------ */
+.bg-ambient {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(183,176,255,0.22), transparent 42%),
+    radial-gradient(circle at 80% 30%, rgba(122,111,224,0.18), transparent 46%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.14), transparent 52%);
+  filter: blur(120px);
+  z-index: -2;
+}
+
+/* ------------------------------
+   small utilities you were using
+------------------------------ */
+.glow-soft { box-shadow: var(--glow-soft); }
+.glow-strong { box-shadow: var(--glow-strong); }
+.text-glow { text-shadow: 0 0 26px rgba(255, 255, 255, 0.28); }
+
+/* ------------------------------
+   links + selection
+------------------------------ */
+a { color: inherit; text-decoration: none; }
+a:visited { color: inherit; }
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.webring-bottom-fade {
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.00) 70%),
+    radial-gradient(900px 260px at 50% 100%, rgba(0,0,0,0.40), rgba(0,0,0,0.00) 70%);
+}
+
