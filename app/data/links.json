@@ -1,0 +1,26 @@
+[
+  {
+    "website": "https://shernanjavier.com",
+    "cohort": "meraki",
+    "firstName": "Shernan",
+    "lastName": "Javier",
+    "city": "Toronto",
+    "region": "ON"
+  },
+  {
+    "website": "https://mccauleyarmishaw.com",
+    "cohort": "meraki",
+    "firstName": "McCauley",
+    "lastName": "Cummings",
+    "city": "Winnipeg",
+    "region": "MB"
+  },
+  {
+    "website": "https://www.bskdany.com/",
+    "cohort": "kairos",
+    "firstName": "Daniel",
+    "lastName": "Byshkin",
+    "city": "Ottawa",
+    "region": "ON"
+  }
+]
