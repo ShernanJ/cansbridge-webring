@@ -14,6 +14,7 @@ export default function TopLogo3D() {
 
   return (
     <section className="w-full flex justify-center">
+      {/* Stable hero container (no vh) */}
       <div className="relative -mt-12 mx-auto w-[min(820px,96vw)] aspect-[4/3] max-h-[620px] overflow-visible">
         {/* halo glow behind logo canvas */}
         <div
@@ -27,12 +28,12 @@ export default function TopLogo3D() {
           }}
         />
 
-          <Canvas
-            className="block h-full w-full"
-            camera={{ position: [0, 0, 3.05], fov: 42 }}
-            gl={{ antialias: true, alpha: true }}
-            dpr={[1, 1.75]}
-            >
+        <Canvas
+          className="block h-full w-full"
+          camera={{ position: [0, 0, 3.05], fov: 42 }}
+          gl={{ antialias: true, alpha: true }}
+          dpr={[1, 1.75]}
+        >
           {/* local glow near logo only */}
           <GlowStars count={70} radius={4.2} size={0.022} opacity={0.55} />
           <GlowStars count={85} radius={3.2} size={0.045} opacity={0.85} />
