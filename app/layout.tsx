@@ -7,6 +7,13 @@ const lato = Lato({
   weight: ["100", "300", "400", "700", "900"] as const,
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://cansbridgewebring.com"), // change to your domain
 
