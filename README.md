@@ -18,9 +18,9 @@ this is a simple directory of scholar & fellow websites.
 
 ## how to add
 
-### option 1 — submit form
+### option 1 — msg shernan on discord
 
-👉 submit your site here (link)
+msg me on discord @ **shernan**
 
 ### option 2 — pull request
 
