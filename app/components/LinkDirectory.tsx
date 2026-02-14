@@ -4,7 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import type { ScholarLink } from "@/app/components/types";
 import { cohortLabel } from "@/app/data/cohorts";
-
 function domainFromUrl(url: string) {
   try {
     return new URL(url).host.replace(/^www\./, "");
@@ -38,8 +37,9 @@ export default function LinkDirectory({ links }: { links: ScholarLink[] }) {
     });
   }, [links, query]);
 
+
   return (
-    <section className="w-[min(94vw,60vw)] max-w-5xl">
+    <section className="w-[min(92vw,65%)] max-w-5xl mx-auto">
       <div className="mx-auto w-full max-w-5xl">
         <div className="flex items-center gap-3 text-white/70">
           <span className="select-none text-white/55">⌕</span>
@@ -54,22 +54,34 @@ export default function LinkDirectory({ links }: { links: ScholarLink[] }) {
 
         <div className="mt-3 h-px w-full bg-white/25" />
 
-        <ul className="mt-6 mb-12 grid grid-cols-2 gap-x-10 gap-y-7 sm:grid-cols-3 lg:grid-cols-6">
+        <ul className="
+          mt-6 grid list-none pb-12
+          gap-x-12 gap-y-12
+          [grid-template-columns:repeat(auto-fit,minmax(min(22ch,100%),1fr))]
+        ">
           {filtered.map((l) => {
             const domain = domainFromUrl(l.website);
             return (
-              <li key={l.website} className="truncate text-center">
+              <li key={l.website} className="text-center py-3" style={{ minHeight: '30px' }}>
                 <Link
                   href={l.website}
                   target="_blank"
-                  className="text-[11px] tracking-[0.16em] text-white/60 transition hover:text-white/90"
+                  className="
+                    block text-center
+                    text-[11px]
+                    tracking-[0.10em] sm:tracking-[0.16em]
+                    text-white/65 hover:text-white/95 transition
+                    break-words [overflow-wrap:anywhere]
+                  "
                 >
                   {domain}
                 </Link>
+
               </li>
             );
           })}
         </ul>
+
 
         <div className="mt-10 flex justify-center">
         <a href="https://github.com/ShernanJ/cansbridge-webring" target="_blank"
