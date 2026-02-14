@@ -11,7 +11,7 @@
     "website": "https://mccauleyarmishaw.com",
     "cohort": "meraki",
     "firstName": "McCauley",
-    "lastName": "Cummings",
+    "lastName": "Armishaw",
     "city": "Winnipeg",
     "region": "MB"
   },
@@ -21,6 +21,38 @@
     "firstName": "Daniel",
     "lastName": "Byshkin",
     "city": "Ottawa",
+    "region": "ON"
+  },
+  {
+    "website": "https://chimcisaac.co/",
+    "cohort": "apeiron",
+    "firstName": "Chi",
+    "lastName": "McIsaac",
+    "city": "Ottawa",
+    "region": "ON"
+  },
+  {
+    "website": "https://www.eshanb.com/",
+    "cohort": "eunoia",
+    "firstName": "Eshan",
+    "lastName": "Betrabet",
+    "city": "Toronto",
+    "region": "ON"
+  },
+  {
+    "website": "https://swallowmesea.carrd.co/",
+    "cohort": "arete",
+    "firstName": "Kelly",
+    "lastName": "Nguyen",
+    "city": "Vancouver",
+    "region": "BC"
+  },
+  {
+    "website": "https://www.michaelhan.dev/",
+    "cohort": "genesis",
+    "firstName": "Michael",
+    "lastName": "Han",
+    "city": "Toronto",
     "region": "ON"
   }
 ]
