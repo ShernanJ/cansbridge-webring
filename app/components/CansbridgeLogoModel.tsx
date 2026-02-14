@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
+import { Vector3, Mesh, Box3, MeshStandardMaterial, Color } from "three";
 import { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 export default function CansbridgeLogoModel({
@@ -12,31 +12,31 @@ export default function CansbridgeLogoModel({
   controlsRef: React.RefObject<OrbitControlsImpl>;
 }) {
   const gltf = useGLTF("/Cansbridge.glb");
-  const spinRef = React.useRef<THREE.Group>(null!);
+  const spinRef = React.useRef<Mesh>(null!);
 
-  const HOME_TARGET = React.useMemo(() => new THREE.Vector3(0, 0, 0), []);
-  const HOME_POS = React.useMemo(() => new THREE.Vector3(0, 0, 3.2), []);
+  const HOME_TARGET = React.useMemo(() => new Vector3(0, 0, 0), []);
+  const HOME_POS = React.useMemo(() => new Vector3(0, 0, 3.2), []);
   const isInteracting = React.useRef(false);
 
   React.useMemo(() => {
     gltf.scene.traverse((obj) => {
-      if ((obj as THREE.Mesh).isMesh) {
-        (obj as THREE.Mesh).material = new THREE.MeshStandardMaterial({
+      if ((obj as Mesh).isMesh) {
+        (obj as Mesh).material = new MeshStandardMaterial({
           color: "#ffffff",
           roughness: 0.2,
           metalness: 0.02,
-          emissive: new THREE.Color("#ffffff"),
+          emissive: new Color("#ffffff"),
           emissiveIntensity: 0.06,
         });
       }
     });
 
-    const box = new THREE.Box3().setFromObject(gltf.scene);
-    const center = new THREE.Vector3();
+    const box = new Box3().setFromObject(gltf.scene);
+    const center = new Vector3();
     box.getCenter(center);
     gltf.scene.position.sub(center);
 
-    const size = new THREE.Vector3();
+    const size = new Vector3();
     box.getSize(size);
     const maxAxis = Math.max(size.x, size.y, size.z);
 
