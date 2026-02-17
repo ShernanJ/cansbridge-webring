@@ -57,7 +57,7 @@
   },
   {
     "website": "https://www.kevinvalencia.ca/",
-    "cohort": "arete",
+    "cohort": "meraki",
     "firstName": "Kevin",
     "lastName": "Valencia",
     "city": "Kingston",
@@ -69,6 +69,14 @@
     "firstName": "Bosco",
     "lastName": "Ng",
     "city": "Kingston",
+    "region": "ON"
+  },
+  {
+    "website": "https://demireren.ca",
+    "cohort": "meraki",
+    "firstName": "Demir",
+    "lastName": "Eren",
+    "city": "Waterloo",
     "region": "ON"
   }
 ]
