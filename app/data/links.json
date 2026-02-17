@@ -49,10 +49,26 @@
   },
   {
     "website": "https://www.michaelhan.dev/",
-    "cohort": "genesis",
+    "cohort": "arete",
     "firstName": "Michael",
     "lastName": "Han",
     "city": "Toronto",
+    "region": "ON"
+  },
+  {
+    "website": "https://www.kevinvalencia.ca/",
+    "cohort": "arete",
+    "firstName": "Kevin",
+    "lastName": "Valencia",
+    "city": "Kingston",
+    "region": "ON"
+  },
+  {
+    "website": "https://www.boscong.dev/",
+    "cohort": "tazkiyah",
+    "firstName": "Bosco",
+    "lastName": "Ng",
+    "city": "Kingston",
     "region": "ON"
   }
 ]
